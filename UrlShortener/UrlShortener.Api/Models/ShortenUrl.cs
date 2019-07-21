@@ -19,5 +19,8 @@ namespace UrlShortener.Api.Models
 
         [BsonElement("sequence_value"), BsonIgnoreIfNull]
         public ulong? SequenceValue { get; set; }
+
+        [BsonIgnore]
+        public string ShortUrl { get; set; }
     }
 }

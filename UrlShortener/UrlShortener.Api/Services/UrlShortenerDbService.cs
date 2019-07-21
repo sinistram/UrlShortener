@@ -49,6 +49,11 @@ namespace UrlShortener.Api.Services
             return _urls.Find(url => url.UserId == userId).ToList();
         }
 
+        public string CreateUserId()
+        {
+            return ObjectId.GenerateNewId().ToString();
+        }
+
         private ulong GetNextId()
         {
             var filter = Builders<ShortenUrl>.Filter.Eq(item => item.Id, SequenceId);
