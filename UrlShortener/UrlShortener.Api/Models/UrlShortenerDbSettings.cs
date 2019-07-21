@@ -3,7 +3,6 @@
     public class UrlShortenerDbSettings : IUrlShortenerDbSettings
     {
         public string UrlsCollectionName { get; set; }
-        public string UrlsSequenceCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }
