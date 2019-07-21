@@ -1,0 +1,11 @@
+﻿################################################################################
+# Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
+################################################################################
+
+/UrlShortener/.vs/UrlShortener/v16
+/UrlShortener/UrlShortener.Api/bin/Debug/netcoreapp2.1
+/UrlShortener/.vs/UrlShortener/DesignTimeBuild/.dtbcache
+/UrlShortener/.vs/UrlShortener/config
+/UrlShortener/UrlShortener.Api/obj
+/UrlShortener/UrlShortener.Tests/bin/Debug/netcoreapp2.1
+/UrlShortener/UrlShortener.Tests/obj
