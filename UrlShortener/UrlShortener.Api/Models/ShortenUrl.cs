@@ -6,18 +6,18 @@ namespace UrlShortener.Api.Models
     public class ShortenUrl
     {
         [BsonId]
-        public long Id { get; set; }
+        public ulong Id { get; set; }
 
-        [BsonElement("user"), BsonIgnoreIfNull]
-        public ObjectId? UserId { get; set; }
+        [BsonElement("user")]
+        public ObjectId UserId { get; set; }
 
-        [BsonElement("urls"), BsonIgnoreIfNull]
+        [BsonElement("url")]
         public string FullUrl { get; set; }
 
-        [BsonElement("views"), BsonIgnoreIfNull]
-        public int? ViewsCount { get; set; }
+        [BsonElement("views")]
+        public int ViewsCount { get; set; }
 
         [BsonElement("sequence_value"), BsonIgnoreIfNull]
-        public long? SequenceValue { get; set; }
+        public ulong? SequenceValue { get; set; }
     }
 }

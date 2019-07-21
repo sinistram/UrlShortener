@@ -1,11 +1,11 @@
 use url_shortener
 
-db.urls.insert({ sequence_name: "id", sequence_value: 0 })
+db.urls.insert({ _id: 0, sequence_value: 1 })
 
 function getNextSequenceValue() {
 
     var sequenceDocument = db.urls.findAndModify({
-        query: { sequence_name: "id" },
+        query: { _id: 0 },
         update: { $inc: { sequence_value: 1 } },
         new: true
     });

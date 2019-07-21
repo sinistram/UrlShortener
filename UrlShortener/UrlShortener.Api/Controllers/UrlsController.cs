@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using UrlShortener.Api.Models;
 using UrlShortener.Api.Services;
 
 namespace UrlShortener.Api.Controllers
@@ -19,6 +20,7 @@ namespace UrlShortener.Api.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            _dbService.Create(new ShortenUrl());
             return new string[] {"value1", "value2"};
         }
 
