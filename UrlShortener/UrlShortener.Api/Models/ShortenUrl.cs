@@ -1,14 +1,16 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
+using UrlShortener.Api.Extensions;
 
 namespace UrlShortener.Api.Models
 {
     public class ShortenUrl
     {
-        [BsonId]
+        [BsonId, JsonIgnore]
         public ulong Id { get; set; }
 
-        [BsonElement("user")]
+        [BsonElement("user"), JsonIgnore]
         public ObjectId UserId { get; set; }
 
         [BsonElement("url")]
@@ -17,10 +19,9 @@ namespace UrlShortener.Api.Models
         [BsonElement("views")]
         public int ViewsCount { get; set; }
 
-        [BsonElement("sequence_value"), BsonIgnoreIfNull]
+        [BsonElement("sequence_value"), BsonIgnoreIfNull, JsonIgnore]
         public ulong? SequenceValue { get; set; }
 
-        [BsonIgnore]
-        public string ShortUrl { get; set; }
+        [BsonIgnore] public string ShortUrl => $"{AppSettingsProvider.AppDomainUrl}/{Id.ToBase62()}";
     }
 }

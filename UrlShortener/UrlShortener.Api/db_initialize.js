@@ -13,4 +13,4 @@ function getNextSequenceValue() {
     return sequenceDocument.sequence_value;
 }
 
-db.urls.insert({ "_id": getNextSequenceValue(), "user": "00001", "url": "test.com/test", "views": 0 })
+db.urls.createIndex({ user: 1 })

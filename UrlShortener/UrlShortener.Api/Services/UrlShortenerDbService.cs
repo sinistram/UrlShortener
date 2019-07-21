@@ -36,6 +36,8 @@ namespace UrlShortener.Api.Services
             var update = Builders<ShortenUrl>.Update.Inc(item => item.ViewsCount, 1);
             var url = _urls.FindOneAndUpdate(filter, update);
 
+            url.ViewsCount++;
+
             if (url is null)
             {
                 throw new ArgumentException($"The url with id {id} not found.", nameof(id));
@@ -49,9 +51,9 @@ namespace UrlShortener.Api.Services
             return _urls.Find(url => url.UserId == userId).ToList();
         }
 
-        public string CreateUserId()
+        public ObjectId CreateUserId()
         {
-            return ObjectId.GenerateNewId().ToString();
+            return ObjectId.GenerateNewId();
         }
 
         private ulong GetNextId()
@@ -74,6 +76,9 @@ namespace UrlShortener.Api.Services
             {
                 _urls.InsertOne(new ShortenUrl { Id = SequenceId, SequenceValue = SequenceStart });
             }
+
+            _urls.Indexes.CreateOne(
+                new CreateIndexModel<ShortenUrl>(Builders<ShortenUrl>.IndexKeys.Ascending(_ => _.UserId)));
         }
     }
 }
