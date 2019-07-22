@@ -63,12 +63,6 @@ namespace UrlShortener.Tests
         }
 
         [TestMethod]
-        public void FromBase62ShouldGenerateCorrectValueWhenGivenMinValued()
-        {
-            "11".FromBase62().Should().Be(63);
-        }
-
-        [TestMethod]
         public void FromBase62ShouldThrowArgumentExceptionWhenGivenWrongStringWithWrongSymbols()
         {
             Action act = () => "d7s&ds".FromBase62();
